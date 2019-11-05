@@ -1,0 +1,487 @@
+@prefix rio: <http://ontology.tib.eu/rio/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+<http://ontology.tib.eu/rio/> rdf:type owl:Ontology ;
+                               owl:versionIRI <http://ontology.tib.eu/rio/0.1/> ;
+							   owl:versionInfo "2019-11-04"^^xsd:string .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://ontology.tib.eu/rio/access_relating_work
+rio:access_relating_work rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rio:relates ;
+                      owl:inverseOf rio:work_related_by_access ;
+					  rdfs:domain rio:Access ;
+                      rdfs:range rio:Work ;
+                      rdfs:label "accesses work"@en-us .
+
+
+###  http://ontology.tib.eu/rio/apply_relating_method
+rio:apply_relating_method rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rio:relates ;
+                       owl:inverseOf rio:method_related_by_apply ;
+                       rdfs:domain rio:Method_Usage ;
+                       rdfs:range rio:Method ;
+                       rdfs:label "applies method"@en-us .
+
+
+###  http://ontology.tib.eu/rio/appraise_relating_event
+rio:appraise_relating_event rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rio:relates ;
+                         owl:inverseOf rio:event_related_by_appraise ;
+						 rdfs:domain                   [ a            owl:Class ;
+                                        owl:unionOf  ( rio:Clap rio:Like rio:Mention rio:Participation )
+                                      ] ;
+                         rdfs:range rio:Event ;
+                         rdfs:label "appraises event"@en-us .
+
+
+###  http://ontology.tib.eu/rio/appraise_relating_method
+rio:appraise_relating_method rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rio:relates ;
+                          owl:inverseOf rio:method_related_by_appraise ;
+						  rdfs:domain                   [ a            owl:Class ;
+                                        owl:unionOf  ( rio:Clap rio:Like rio:Mention )
+                                      ] ;			  
+                          rdfs:range rio:Method ;
+                          rdfs:label "appraises method"@en-us .
+
+
+###  http://ontology.tib.eu/rio/appraise_relating_organization
+rio:appraise_relating_organization rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf rio:relates ;
+                                owl:inverseOf rio:organization_related_by_appraise ;
+								rdfs:domain                   [ a            owl:Class ;
+                                        owl:unionOf  ( rio:Clap rio:Like rio:Mention )
+                                      ] ;				
+                                rdfs:range rio:Organization ;
+                                rdfs:label "appraises organization"@en-us .
+
+
+###  http://ontology.tib.eu/rio/appraise_relating_person
+rio:appraise_relating_person rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rio:relates ;
+                          owl:inverseOf rio:person_related_by_appraise ;
+						  rdfs:domain                   [ a            owl:Class ;
+                                        owl:unionOf  (rio:Citation  rio:Clap rio:Like rio:Mention )
+                                      ] ;	
+                          rdfs:range rio:Person ;
+                          rdfs:label "appraises person"@en-us .
+
+
+###  http://ontology.tib.eu/rio/appraise_relating_project
+rio:appraise_relating_project rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rio:relates ;
+                           owl:inverseOf rio:project_related_by_appraise ;
+						   rdfs:domain                   [ a            owl:Class ;
+                                        owl:unionOf  ( rio:Clap rio:Like rio:Mention )
+                                      ] ;				   
+                           rdfs:range rio:Project ;
+                           rdfs:label "appraises project"@en-us .
+
+
+###  http://ontology.tib.eu/rio/appraise_relating_work
+rio:appraise_relating_work rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rio:relates ;
+                        owl:inverseOf rio:work_related_by_appraise ;
+						rdfs:domain                   [ a            owl:Class ;
+                                        owl:unionOf  (rio:Citation rio:Clap rio:Fork rio:Like rio:Mention )
+                                      ] ;				
+                        rdfs:range rio:Work ;
+                        rdfs:label "appraises work"@en-us .
+
+
+###  http://ontology.tib.eu/rio/event_related_by_appraise
+rio:event_related_by_appraise rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rio:relatedBy ;
+                           rdfs:domain rio:Event ;
+                           rdfs:label "event appraised"@en-us .
+
+
+###  http://ontology.tib.eu/rio/has_source
+rio:has_source rdf:type owl:ObjectProperty ;
+            owl:inverseOf rio:source_of ;
+            rdfs:domain rio:Act ;
+            rdfs:range rio:Source ;
+            rdfs:label "source"@en-us .
+
+
+###  http://ontology.tib.eu/rio/indicates
+rio:indicates rdf:type owl:ObjectProperty ;
+           rdfs:domain rio:Act ;
+           rdfs:range rio:Impact ;
+           rdfs:label "indicates"@en-us .
+
+
+###  http://ontology.tib.eu/rio/method_related_by_apply
+rio:method_related_by_apply rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rio:relatedBy ;
+                         rdfs:domain rio:Method ;
+                         rdfs:range rio:Method_Usage ;
+                         rdfs:label "method applied"@en-us .
+
+
+###  http://ontology.tib.eu/rio/method_related_by_appraise
+rio:method_related_by_appraise rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf rio:relatedBy ;
+                            rdfs:domain rio:Method ;
+                            rdfs:label "method appraised"@en-us .
+
+
+###  http://ontology.tib.eu/rio/organization_related_by_appraise
+rio:organization_related_by_appraise rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf rio:relatedBy ;
+                                  rdfs:domain rio:Organization ;
+                                  rdfs:label "organization appraised"@en-us .
+
+
+###  http://ontology.tib.eu/rio/person_related_by_appraise
+rio:person_related_by_appraise rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf rio:relatedBy ;
+                            rdfs:domain rio:Person ;
+                            rdfs:label "person appraised"@en-us .
+
+
+###  http://ontology.tib.eu/rio/project_related_by_appraise
+rio:project_related_by_appraise rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rio:relatedBy ;
+                             rdfs:domain rio:Project ;
+                             rdfs:label "project appraised"@en-us .
+
+
+###  http://ontology.tib.eu/rio/relatedBy
+rio:relatedBy rdf:type owl:ObjectProperty ;
+           owl:inverseOf rio:relates ;
+           rdfs:label "related By"@en-us .
+
+
+###  http://ontology.tib.eu/rio/relates
+rio:relates rdf:type owl:ObjectProperty .
+
+
+###  http://ontology.tib.eu/rio/source_of
+rio:source_of rdf:type owl:ObjectProperty ;
+           rdfs:domain rio:Source ;
+           rdfs:range rio:Act ;
+           rdfs:label "Quelle von"@en-us .
+
+
+###  http://ontology.tib.eu/rio/work_related_by_access
+rio:work_related_by_access rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rio:relatedBy ;
+                        rdfs:domain rio:Work ;
+                        rdfs:label "work accessed"@en-us .
+
+
+###  http://ontology.tib.eu/rio/work_related_by_appraise
+rio:work_related_by_appraise rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rio:relatedBy ;
+                          rdfs:domain rio:Work ;
+                          rdfs:label "work appraised"@en-us .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontology.tib.eu/rio/Access
+rio:Access rdf:type owl:Class ;
+        rdfs:subClassOf rio:Act ;
+		rdfs:label "Access"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Act
+rio:Act rdf:type owl:Class ;
+	rdfs:label "Act"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Agent
+rio:Agent rdf:type owl:Class ;
+       rdfs:subClassOf rio:Entity ;
+	   rdfs:label "Agent"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Aggregator
+rio:Aggregator rdf:type owl:Class ;
+            rdfs:subClassOf rio:Source ;
+			rdfs:label "Aggregator"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Apply
+rio:Apply rdf:type owl:Class ;
+       rdfs:subClassOf rio:Act ;
+	   rdfs:label "Apply"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Appraise
+rio:Appraise rdf:type owl:Class ;
+          rdfs:subClassOf rio:Act ;
+		  rdfs:label "Appraise"@en-us .	
+
+
+###  http://ontology.tib.eu/rio/Citation
+rio:Citation rdf:type owl:Class ;
+          rdfs:subClassOf rio:Appraise ;
+		  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Person ;
+                                    owl:onProperty     rio:person_related_by_appraise
+                                  ] ;
+		  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_appraise
+                                  ] ;							  
+		  
+		  rdfs:label "Citation"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Clap
+rio:Clap rdf:type owl:Class ;
+      rdfs:subClassOf rio:Appraise ;
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Event ;
+                                    owl:onProperty     rio:event_related_by_appraise
+                                  ] ;
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Method ;
+                                    owl:onProperty     rio:method_related_by_appraise
+                                  ] ;							  
+								  
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Organization ;
+                                    owl:onProperty     rio:organization_related_by_appraise
+                                  ] ;							  
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Person ;
+                                    owl:onProperty     rio:person_related_by_appraise
+                                  ] ;	
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Project ;
+                                    owl:onProperty     rio:project_related_by_appraise
+                                  ] ;							  
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_appraise
+                                  ] ;							 							  
+								  
+	  rdfs:label "Clap"@en-us .
+
+###  http://ontology.tib.eu/rio/Collaborative_Platform
+rio:Collaborative_Platform rdf:type owl:Class ;
+                        rdfs:subClassOf rio:Single_Source ;
+						rdfs:label "Collaborative platform"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Download
+rio:Download rdf:type owl:Class ;
+          rdfs:subClassOf rio:Access ;
+		  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_access
+                                  ] ;	
+		  rdfs:label "Download"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Entity
+rio:Entity rdf:type owl:Class ;
+		rdfs:subClassOf owl:Thing ;
+		rdfs:label "Entity"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Event
+rio:Event rdf:type owl:Class ;
+       rdfs:subClassOf rio:Entity ;
+	   rdfs:label "Event"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Fork
+rio:Fork rdf:type owl:Class ;
+      rdfs:subClassOf rio:Appraise ;
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_appraise
+                                  ] ;	
+	  rdfs:label "Fork"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Impact
+rio:Impact rdf:type owl:Class ;
+		rdfs:subClassOf owl:Thing ;
+		rdfs:label "Impact"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Like
+rio:Like rdf:type owl:Class ;
+      rdfs:subClassOf rio:Appraise ;
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Event ;
+                                    owl:onProperty     rio:event_related_by_appraise
+                                  ] ;
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Method ;
+                                    owl:onProperty     rio:method_related_by_appraise
+                                  ] ;		
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Organization ;
+                                    owl:onProperty     rio:organization_related_by_appraise
+                                  ] ;	
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Person ;
+                                    owl:onProperty     rio:person_related_by_appraise
+                                  ] ;	
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Project ;
+                                    owl:onProperty     rio:project_related_by_appraise
+                                  ] ;	
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_appraise
+                                  ] ;									
+	  rdfs:label "Like"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Mention
+rio:Mention rdf:type owl:Class ;
+         rdfs:subClassOf rio:Appraise ;
+		 rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Event ;
+                                    owl:onProperty     rio:event_related_by_appraise
+                                  ] ;
+		 rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Method ;
+                                    owl:onProperty     rio:method_related_by_appraise
+                                  ] ;	
+		 rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Organization ;
+                                    owl:onProperty     rio:organization_related_by_appraise
+                                  ] ;
+		 rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Person ;
+                                    owl:onProperty     rio:person_related_by_appraise
+                                  ] ;	
+		 rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Project ;
+                                    owl:onProperty     rio:project_related_by_appraise
+                                  ] ; 	
+		 rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_appraise
+                                  ] ;								
+		 rdfs:label "Mention"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Method
+rio:Method rdf:type owl:Class ;
+        rdfs:subClassOf rio:Entity ;
+		rdfs:label "Method"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Method_Usage
+rio:Method_Usage rdf:type owl:Class ;
+              rdfs:subClassOf rio:Apply ;
+			  rdfs:label "Method usage"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Online_Social_Network
+rio:Online_Social_Network rdf:type owl:Class ;
+                       rdfs:subClassOf rio:Single_Source ;
+					   rdfs:label "Online social network"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Organization
+rio:Organization rdf:type owl:Class ;
+              rdfs:subClassOf rio:Agent ;
+			  rdfs:label "Organization"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Participation
+rio:Participation rdf:type owl:Class ;
+               rdfs:subClassOf rio:Appraise ;
+			   rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Event ;
+                                    owl:onProperty     rio:event_related_by_appraise
+                                  ] ;
+			   rdfs:label "Participation"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Person
+rio:Person rdf:type owl:Class ;
+        rdfs:subClassOf rio:Agent ;
+		rdfs:label "Person"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Project
+rio:Project rdf:type owl:Class ;
+         rdfs:subClassOf rio:Entity ;
+		 rdfs:label "Project"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Repository
+rio:Repository rdf:type owl:Class ;
+            rdfs:subClassOf rio:Single_Source ;
+			rdfs:label "Repository"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Single_Source
+rio:Single_Source rdf:type owl:Class ;
+               rdfs:subClassOf rio:Source ;
+			   rdfs:label "Single source"@en-us .
+			   
+
+
+###  http://ontology.tib.eu/rio/Source
+rio:Source rdf:type owl:Class ;
+		rdfs:label "Source"@en-us .
+
+
+###  http://ontology.tib.eu/rio/View
+rio:View rdf:type owl:Class ;
+      rdfs:subClassOf rio:Access ;
+	  rdfs:subClassOf           [ a                  owl:Restriction ;
+                                    owl:allValuesFrom  rio:Work ;
+                                    owl:onProperty     rio:work_related_by_access
+                                  ] ;
+	  rdfs:label "View"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Work
+rio:Work rdf:type owl:Class ;
+      rdfs:subClassOf rio:Entity ;
+	  rdfs:label "Work"@en-us .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://ontology.tib.eu/rio/Community_Impact
+rio:Community_Impact rdf:type owl:NamedIndividual ,
+                           rio:Impact ;
+                  rdfs:label "Community impact"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Openness
+rio:Openness rdf:type owl:NamedIndividual ,
+                   rio:Impact ;
+          rdfs:label "Openness"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Scientific_Impact
+rio:Scientific_Impact rdf:type owl:NamedIndividual ,
+                            rio:Impact ;
+                   rdfs:label "Scientific impact"@en-us .
+
+
+###  http://ontology.tib.eu/rio/Societal_Impact
+rio:Societal_Impact rdf:type owl:NamedIndividual ,
+                          rio:Impact ;
+                 rdfs:label "Societal impact"@en-us .
+
+
+###  Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
