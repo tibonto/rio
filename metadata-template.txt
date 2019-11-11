@@ -1,0 +1,17 @@
+# Ontology metadata attributes required for registration in the TIB ontology hub.
+# This file should be maintained under the source control and must be released anongside the ontology, under the same versioning scheme.
+# The file name is identical to the ontology's ttl file with .txt extension.
+
+shortName: RIO
+title: Research Impact Ontology
+description: The Research Impact Ontology aims at describing the relationship between research objects and the impact they have.
+autorFullName: Tatiana Walther; Eva Maria Mateo Decabo; Svantje Lilienthal; Christian Hauschke; Grischa Fraumann
+authorEmail: rosi.project@tib.eu
+maintainerFullname: Project ROSI
+maintainerEmail: rosi.project@tib.eu
+keywords: research impact; scientometrics
+license: GNU General Public License v3.0
+version: v0.1
+repositoryURL: https://github.com/tibonto/rio
+releaseURL: https://github.com/tibonto/rio/releases/tag/v0.1
+
